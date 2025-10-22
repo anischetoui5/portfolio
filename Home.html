@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+
+        nav {
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+          z-index: 1000; /* Ensure the switcher is on top of other elements */
+
+    }
+
+    /* Center the navbar links */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 0 25px;
+    }
+    a {
+  text-decoration: none;
+}
+.menu__link {
+  color: black;
+  font-weight: bold;
+  line-height: 2;
+  position: relative;
+  font-size: 20px;
+  font-family: cursive;
+
+}
+
+.menu__link::before {
+  content: '';
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #d5c4e6;
+  position: absolute;
+  bottom: -.25rem;
+  right: 0;
+
+  transition: right .4s, width .4s, left .4s;
+}
+
+.menu__link:hover::before {
+  width: 100%;
+  left: 0;
+}
+#swit{
+	position: fixed;
+	left: 40px;
+}
+.switch {
+    font-size: 17px;
+    width: 3.5em;
+    height: 2em;
+    transform: translateX(-50%); /* Center horizontally */
+    bottom: 20px; /* Distance from the bottom */
+    z-index: 1000; /* Ensure the switcher is on top of other elements */
+    margin-bottom: 0; /* Optional: Adjust if you need more spacing from the bottom */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    --background: #28096b;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    transition: 0.5s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    left: 10%;
+    bottom: 15%;
+    background: var(--background);
+    transition: 0.5s;
+}
+
+input:checked + .slider {
+    background-color: #522ba7;
+}
+
+input:checked + .slider:before {
+    transform: translateX(100%);
+}
+
+
+
+        /* Light theme (default) */
+        body {
+            background-color: #f9f1ff;
+            color: black;
+        }
+
+        /* Dark theme */
+        body.dark-mode {
+            background-color: #2e2c31;
+            color: #ffffff;
+        }
+
+        /* Dark mode menu link color */
+        body.dark-mode .menu__link {
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        body.dark-mode .slider:before {
+            background: #522ba7; /* Black moon in dark mode */
+            box-shadow: inset 8px -4px 0px 0px #ffffff; /* White glow */
+        }
+
+        /* Light mode moon */
+        .slider:before {
+            background: yellow; /* Yellow moon in light mode */
+            box-shadow: inset 8px -4px 0px 0px #fff000;
+        }
+
+        body.dark-mode .wahda p {
+            color: whitesmoke;
+        }
+        body.dark-mode .definition {
+        	color: black;
+        }
+
+
+.clubs{
+	font-size: 40px;
+	margin-top: 100px;
+}
+.clubs:hover{
+	font-size: 45px;
+	color: purple;
+	transition-duration: 0.3s;
+}
+
+        body.dark {
+            background: #232223;
+            color: white;
+        }
+
+        .credit {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: inherit;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            overflow: hidden;
+            min-width: 600px;
+            max-width: 900px;
+            width: calc(100% - 100px);
+            height: 400px;
+        }
+
+        .option {
+            position: relative;
+            overflow: hidden;
+            min-width: 60px;
+            margin: 10px;
+            background: var(--optionBackground);
+            background-size: auto 120%;
+            background-position: center;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .option:nth-child(1) {
+            --defaultBackground: #ED5565;
+        }
+
+        .option:nth-child(2) {
+            --defaultBackground: #FC6E51;
+        }
+
+        .option:nth-child(3) {
+            --defaultBackground: #FFCE54;
+        }
+
+        .option:nth-child(4) {
+            --defaultBackground: #2ECC71;
+        }
+
+        .option:nth-child(5) {
+            --defaultBackground: #5D9CEC;
+        }
+
+        .option:nth-child(6) {
+            --defaultBackground: #AC92EC;
+        }
+
+        .option.active {
+            flex-grow: 10000;
+            transform: scale(1);
+            max-width: 600px;
+            margin: 0;
+            border-radius: 40px;
+            background-size: auto 100%;
+        }
+
+        .option.active .label {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .option {
+            border-radius: 70px;
+        }
+
+        .option .label {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .shadow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            transition: .5s;
+        }
+
+        .label {
+            display: flex;
+            position: absolute;
+            right: 0;
+            height: 40px;
+            transition: .5s;
+        }
+
+
+        .label .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 10px;
+            color: white;
+            white-space: pre;
+        }
+
+        .label .info {
+            position: relative;
+            transition: .5s;
+        }
+
+        .label .info .main {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .label .info .sub {
+            transition-delay: .1s;
+        }
+
+        * {
+	box-sizing: border-box;
+}
+
+figure img {
+	width: 100%;
+	display: block;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	transition: transform 1000ms;
+}
+
+ul {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	max-width: 100%;
+	width: 70rem;
+}
+
+figure {
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+figure::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200%;
+	height: 200%;
+	background: rgba(0, 0, 0, 0.5);
+	transform-origin: center;
+	opacity: 0;
+	transform: scale(2);
+	transition: opacity 300ms;
+}
+
+figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	place-items: center;
+	text-align: center;
+	padding: 1rem;
+	color: white;
+	font-size: 1.2rem;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 600ms, transform 600ms;
+}
+
+a:hover, :focus figure::after {
+	opacity: 1;
+}
+
+a:hover, :focus figcaption {
+	opacity: 1;
+	transition: opacity 600ms;
+}
+	figcaption {
+		transform: translate3d(0, 2rem, 0);
+	}
+	
+	figure::after {
+		border-radius: 50%;
+		opacity: 1;
+		transform: scale(0);
+		transition: transform 900ms;
+	}
+	
+	a:is(:hover, :focus) figure::after {
+		transform: scale(2.5);
+	}
+
+	a:is(:hover, :focus) figcaption {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+		transition: opacity 600ms 400ms, transform 600ms 400ms;
+	}
+
+	a:is(:hover, :focus) figure	 img {
+		transform: scale(1.2);
+	}
+nav.scrolled {
+  background-color: rgba(241, 210, 255, 0.5); /* Semi-transparent background when scrolling */
+  border-bottom: 0px solid #fff; /* Smaller white border when scrolling */
+  border-left: 0px solid #fff; /* Smaller left border when scrolling */
+  border-right: 0px solid #fff; /* Smaller right border when scrolling */
+  width: 40%; /* Narrow the nav bar when scrolling */
+  margin-left: 30%; /* Center the nav bar */
+  border-radius: 20px; /* Border radius when scrolling */
+  margin-top: 20px;
+  color: purple;
+  transition-duration: 0.2s;
+}
+.container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.definition {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.image {
+    flex: 0 0 200px;
+}
+
+.image img {
+    width: 70%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.image img:hover	 {
+	width: 80%;
+	transition-duration: 0.3s;
+    
+}
+#soc a img{
+	width: 40px;
+	float: right;
+	margin-left: 10px;
+	margin-top: 20px;
+	margin-bottom: 17px;
+}
+#soc a img:hover{
+	width: 45px;
+	transition-duration: 0.5s;
+}
+</style>
+
+</head>
+<body>
+
+
+    <center> <nav>
+    	<ul>
+      		<li><a href="index.html" class="menu__link">About Me</a></li>
+      		<li><a href="Home.html" class="menu__link">Experiences</a></li>
+      		<li><a href="project.html" class="menu__link">Project</a></li>
+      		<li><a href="contact.html" class="menu__link">Contact</a></li>  
+    	</ul>
+    </nav> </center>
+      <script type="text/javascript">
+    // Detect scroll event and modify styles
+window.addEventListener('scroll', function () {
+  const links = document.querySelectorAll('.menu__link');
+  const nav = document.querySelector('nav');
+
+  // Check if user has scrolled down by a certain amount (e.g., 50px)
+  if (window.scrollY > 50) {
+    links.forEach(link => {
+      link.classList.add('scrolled'); // Add the transparent background
+    });
+    nav.classList.add('scrolled'); // Optional: Add transparent background to nav
+  } else {
+    links.forEach(link => {
+      link.classList.remove('scrolled'); // Remove the transparent background
+    });
+    nav.classList.remove('scrolled'); // Optional: Remove transparent background from nav
+  }
+});
+
+  </script>
+
+    <label class="switch" id="swit">
+        <input type="checkbox">
+        <span class="slider"></span>
+    </label>
+
+
+
+    	<center>
+    		<section class="clubs">
+    			<h1 class="clubs"> Clubs </h1>
+    		</section>
+    	</center>
+
+        <center> 
+        	<div class="options">
+        		<div class="option active" style="--optionBackground:url(481207880_1041316114704881_6888124669317495209_n.jpg);"></div>
+        
+        		<div class="option" style="--optionBackground:url(484309665_1049146913921801_1737182096261860991_n.jpg);"> </div>
+        
+        		<div class="option" style="--optionBackground:url(481450850_1041536321349527_4028879447421478131_n.jpg);"></div>
+        
+        		<div class="option" style="--optionBackground:url(481950118_1040986541404505_1161704648135329251_n.jpg);"></div>
+        
+        		<div class="option" style="--optionBackground:url(484256155_1049146667255159_7705761197067579277_n.jpg);"></div>
+    		</div>
+    	</center>
+
+    <script type="text/javascript">
+        $(".option").click(function(){
+            $(".option").removeClass("active");
+            $(this).addClass("active");
+        });
+    </script>
+
+
+        <center>
+    		<section class="clubs">
+    			<h1 class="clubs"> Activities </h1>
+    		</section>
+    	</center>
+
+    	<center>
+    		<ul>
+	<li>
+		<a href="">
+			<figure>
+				<img src='481999287_1042468467922979_7285663399162657686_n (1).jpg'>
+				<figcaption>Professional training</figcaption>
+			</figure>
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<figure>
+				<img src='481257064_1041536338016192_5200023502873604292_n.jpg'>
+				<figcaption>Adventures</figcaption>
+			</figure>
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<figure>
+				<img src='https://scontent.ftun8-1.fna.fbcdn.net/v/t1.15752-9/462578427_1123116749328484_1496538527433844398_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=5dUJTzntfW8Q7kNvgESxTDi&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&oh=03_Q7cD1QHoic9DsWrSmYez2YXOkXMAGwQ9S9o9hd-Xioij3ZERVA&oe=677A98C3'>
+				<figcaption>Podcasts</figcaption>
+			</figure>
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<figure>
+				<img src='https://scontent.ftun8-1.fna.fbcdn.net/v/t1.15752-9/462583343_1090127818992885_7303442451722368707_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=lEk-0jAHnUwQ7kNvgGMortv&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&oh=03_Q7cD1QHqR1sftHoev0_H7WNYLhhqdLblP2MKZYrCSLS9iRi6vA&oe=677AAF5C'>
+				<figcaption>Formations</figcaption>
+			</figure>
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<figure>
+				<img src='https://scontent.ftun8-1.fna.fbcdn.net/v/t1.15752-9/462638726_599993209233493_3248551915695312371_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=4ASQOhSO4o4Q7kNvgE_Fjvu&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&oh=03_Q7cD1QEMxYVB0aV2_NwuPjtbvRFAa7bey3LgcPlMbkFUzasgmQ&oe=677A8AC8'>
+				<figcaption>Club</figcaption>
+			</figure>
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<figure>
+				<img src='https://scontent.ftun8-1.fna.fbcdn.net/v/t1.15752-9/462637699_922621189822574_836227333625169013_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=awcWjI8JaScQ7kNvgF2I8IA&_nc_zt=23&_nc_ht=scontent.ftun8-1.fna&oh=03_Q7cD1QF30Rgjgc_OngTjPgH3eMmQinnH-WifdL-BWgrphEEBIg&oe=677A9279'>
+				<figcaption>Working</figcaption>
+			</figure>
+		</a>
+	</li>
+</ul>
+</center>
+        <center>
+    		<section class="clubs">
+    			<h1 class="clubs"> Skills </h1> <br>
+    		</section>
+    		    <div class="container">
+        <div class="content">
+            <div class="definition">
+                <h3>HTML</h3>
+                <p style="font-weight: bold;">I am skilled in HTML, creating well-structured, accessible, and responsive web pages. With a focus on clean, semantic code, I build websites that are both user-friendly and SEO optimized. I integrate HTML with CSS and JavaScript to craft dynamic, interactive web experiences.</p>
+            </div>
+            <div class="image">
+                <img src="https://cdn-icons-png.flaticon.com/128/174/174854.png" alt="Image 1">
+            </div>
+        </div>
+        <div class="content">
+            <div class="definition">
+                <h3>CSS</h3>
+                <p style="font-weight: bold;">I am proficient in CSS, using it to create visually appealing, responsive, and user-friendly web designs. I focus on writing clean, efficient stylesheets that ensure consistent layouts across devices. With expertise in Flexbox, Grid, and animations, I bring designs to life and enhance user experiences.</p>
+            </div>
+            <div class="image">
+                <img src="https://cdn-icons-png.flaticon.com/128/732/732190.png" alt="Image 2">
+            </div>
+        </div>
+        <div class="content">
+            <div class="definition">
+                <h3>Java Script</h3>
+                <p style="font-weight: bold;">I have strong JavaScript skills, allowing me to create dynamic, interactive web features. With experience in both vanilla JavaScript and working with modern frameworks, I can build responsive, user-driven applications. I focus on writing clean, efficient code to enhance performance and create seamless user experiences.</p>
+            </div>
+            <div class="image">
+                <img src="https://cdn-icons-png.flaticon.com/128/1199/1199124.png" alt="Image 3">
+            </div>
+        </div>
+        <div class="content">
+            <div class="definition">
+                <h3>Python</h3>
+                <p style="font-weight: bold;">I have a solid understanding of Python, with experience in writing clean, efficient code for various applications. From web development to data analysis, I use Python's versatility to build solutions that are both scalable and easy to maintain. My focus is on problem-solving and optimizing performance, leveraging libraries and frameworks to streamline development.</p>
+            </div>
+            <div class="image">
+                <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="Image 4">
+            </div>
+        </div>
+        <div class="content">
+            <div class="definition">
+                <h3>Definition 4</h3>
+                <p style="font-weight: bold;">I am skilled in using Adobe Lightroom to enhance and refine images, with a focus on color correction, exposure adjustments, and creating visually compelling compositions. I use Lightroom’s powerful tools to bring out the best in photos, whether for personal projects or professional work, ensuring high-quality results with attention to detail.</p>
+            </div>
+            <div class="image">
+                <img src="https://cdn-icons-png.flaticon.com/128/5968/5968514.png" alt="Image 5">
+            </div>
+        </div>
+    </div>
+    	</center>
+
+
+    	        <div id="soc">
+    <a href="https://www.instagram.com/chetouianisg/?next=%2F"> <img src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png" > </a>
+    <a href="https://mail.google.com/mail/u/1/?pli=1#inbox"> <img src="https://cdn-icons-png.flaticon.com/128/5968/5968534.png"> </a>
+    <a href="https://fr.linkedin.com"> <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png">  </a>
+</div>
+
+    <script>
+        // Ensure the DOM is fully loaded before trying to access elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleSwitch = document.querySelector('.switch input');
+
+            // Check for saved theme in local storage
+            const savedTheme = localStorage.getItem('theme') || 'light';
+
+            // If dark theme is saved, apply it
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggleSwitch.checked = true; // Set the toggle switch to "on"
+            }
+
+            // Handle theme change
+            toggleSwitch.addEventListener('change', () => {
+                // Toggle dark mode class
+                document.body.classList.toggle('dark-mode');
+                
+                // Save the new theme preference in local storage
+                const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
+            });
+        });
+    </script>
+</body>
+</html>

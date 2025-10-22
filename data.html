@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .data-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .social img {
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .social img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="entriesContainer"></div>
+
+    <script>
+        // Retrieve form entries from localStorage
+        document.addEventListener("DOMContentLoaded", function() {
+            const entriesContainer = document.getElementById("entriesContainer");
+            let allEntries = JSON.parse(localStorage.getItem("formEntries")) || [];
+
+            if (allEntries.length === 0) {
+                entriesContainer.innerHTML = "<p>No entries yet.</p>";
+            } else {
+                allEntries.forEach(entry => {
+                    const entryDiv = document.createElement("div");
+                    entryDiv.classList.add("data-container");
+
+                    entryDiv.innerHTML = `
+                        <h2>Submitted Information</h2>
+                        <p><strong>Name:</strong> ${entry.name}</p>
+                        <p><strong>Email:</strong> ${entry.email}</p>
+                        <p><strong>Phone Number:</strong> ${entry.phone}</p>
+                        <p><strong>Project Idea:</strong> ${entry.project}</p>
+                    `;
+
+                    entriesContainer.appendChild(entryDiv);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

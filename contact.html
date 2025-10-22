@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+
+.content {
+    padding-top: 60px; /* Adjust the padding to match the height of the navbar */
+}
+#swit{
+	position: fixed;
+	left: 40px;
+}
+.switch {
+    font-size: 17px;
+    position: fixed; /* Fix the position relative to the viewport */
+    width: 3.5em;
+    height: 2em;
+    transform: translateX(-50%); /* Center horizontally */
+    bottom: 20px; /* Distance from the bottom */
+    z-index: 1000; /* Ensure the switcher is on top of other elements */
+    margin-bottom: 0; /* Optional: Adjust if you need more spacing from the bottom */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    --background: #28096b;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    transition: 0.5s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 50%;
+    left: 10%;
+    bottom: 15%;
+    background: var(--background);
+    transition: 0.5s;
+}
+
+input:checked + .slider {
+    background-color: #522ba7;
+}
+
+input:checked + .slider:before {
+    transform: translateX(100%);
+}
+
+
+
+        /* Light theme (default) */
+        body {
+            background-color: #f9f1ff;
+            color: black;
+        }
+
+        /* Dark theme */
+        body.dark-mode {
+            background-color: #2e2c31;
+            color: #ffffff;
+        }
+
+        /* Dark mode menu link color */
+        body.dark-mode .menu__link {
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        body.dark-mode .slider:before {
+            background: #522ba7; /* Black moon in dark mode */
+            box-shadow: inset 8px -4px 0px 0px #ffffff; /* White glow */
+        }
+        body.dark-mode legend {
+            color: whitesmoke;
+              font-size: 1.5rem;
+
+        }
+        body.dark-mode fieldset {
+              border: 2px solid whitesmoke;
+  border-radius: 0.5rem;
+  box-shadow: 7px 7px 0 whitesmoke;
+  padding: 2rem;
+  background-color: #68646e;
+        }
+        body.dark-mode .input {
+  border: 1.5px solid whitesmoke;
+  box-shadow: 2.5px 3px 0 whitesmoke;
+  background-color: #2e2c31;
+  color: whitesmoke;
+}
+body.dark-mode .input::placeholder {
+  color: whitesmoke; /* Change this color to whatever you like */
+}
+body.dark-mode .input:focus {
+  box-shadow: 5.5px 7px 0 whitesmoke;
+}
+
+        /* Light mode moon */
+        .slider:before {
+            background: yellow; /* Yellow moon in light mode */
+            box-shadow: inset 8px -4px 0px 0px #fff000;
+        }
+
+        body.dark-mode .wahda p {
+            color: whitesmoke;
+        }
+
+        nav {
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    /* Center the navbar links */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 0 25px;
+    }
+    a {
+  text-decoration: none;
+}
+.menu__link {
+  color: black;
+  font-weight: bold;
+  line-height: 2;
+  position: relative;
+  font-size: 20px;
+  font-family: cursive;
+}
+
+.menu__link::before {
+  content: '';
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #d5c4e6;
+  position: absolute;
+  bottom: -.25rem;
+  right: 0;
+  transition: right .4s, width .4s, left .4s;
+}
+
+.menu__link:hover::before {
+  width: 100%;
+  left: 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Fieldset styling */
+fieldset {
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 7px 7px 0 #000;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+/* Legend styling */
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Input styling */
+.input {
+  font-family: "SF Pro";
+  max-width: 190px;
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 1.5px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 2.5px 3px 0 #000;
+  outline: none;
+  transition: ease 0.25s;
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+}
+
+.input:focus {
+  box-shadow: 5.5px 7px 0 black;
+}
+
+/* Button styling */
+button {
+  font-family: "SF Pro";
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  border: 1.5px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 2.5px 3px 0 #000;
+  outline: none;
+  transition: ease 0.25s;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 5.5px 7px 0 #000;
+  background-color: #f0f0f0;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Add some space between the form and social media icons */
+}
+
+.social a {
+  margin: 0 10px; /* Space between each social media icon */
+}
+
+.social img {
+  width: 40px; /* Resize the icons */
+  height: 40px; /* Maintain the square aspect ratio */
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.social img:hover {
+  transform: scale(1.2); /* Slightly enlarge the icon on hover */
+  filter: brightness(1.2); /* Add a light effect on hover */
+}
+    </style>
+
+</head>
+<body>
+
+    <label class="switch" id="swit">
+        <input type="checkbox">
+        <span class="slider"></span>
+    </label>
+
+    <center> <nav>
+    	<ul>
+      		<li><a href="index.html" class="menu__link">About Me</a></li>
+      		<li><a href="Home.html" class="menu__link">Experiences</a></li>
+      		<li><a href="project.html" class="menu__link">Project</a></li>
+            <li><a href="contact.html" class="menu__link">Contact</a></li>  
+        </ul>
+
+    <script>
+        // Handle the form submission and save data to localStorage
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting the traditional way
+                
+                // Get the form data
+                const name = form.querySelector('input[name="name"]').value;
+                const email = form.querySelector('input[name="email"]').value;
+                const phone = form.querySelector('input[name="phone"]').value;
+                const project = form.querySelector('textarea[name="project"]').value;
+
+                // Store data in localStorage
+                let formData = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    project: project
+                };
+
+                // If data already exists in localStorage, fetch it and add the new entry
+                let allEntries = JSON.parse(localStorage.getItem("formEntries")) || [];
+                allEntries.push(formData);
+                localStorage.setItem("formEntries", JSON.stringify(allEntries));
+
+                // Show alert to user
+                alert("Done");
+
+                // Redirect to data.html
+                window.location.href = "data.html";
+            });
+        });
+    </script>         		
+
+
+    </nav> </center>
+<div class="wrapper">
+    <form>
+      <fieldset>
+        <legend>Contact Form</legend>
+        <input placeholder="Full Name" class="input" name="name" type="text" required />
+        <input placeholder="Email Address" class="input" name="email" type="email" required />
+        <input placeholder="Phone Number" class="input" name="phone" type="tel" required />
+        
+        <!-- Adding the textarea for the message or long paragraph input -->
+        <textarea placeholder="Your Message" class="input" name="project" rows="4" cols="50" required></textarea>
+        
+        <button type="submit">Done</button>
+        <div class="social">
+    <a href="https://www.instagram.com/chetouianisg/?next=%2F"> <img src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png"> </a>
+    <a href="https://mail.google.com/mail/u/1/?pli=1#inbox"> <img src="https://cdn-icons-png.flaticon.com/128/5968/5968534.png"> </a>
+    <a href="https://fr.linkedin.com"> <img src="https://cdn-icons-png.flaticon.com/128/145/145807.png">  </a>
+</div>
+      </fieldset>
+    </form>
+</div> <br>
+
+
+
+
+    <script>
+        // Ensure the DOM is fully loaded before trying to access elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleSwitch = document.querySelector('.switch input');
+
+            // Check for saved theme in local storage
+            const savedTheme = localStorage.getItem('theme') || 'light';
+
+            // If dark theme is saved, apply it
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggleSwitch.checked = true; // Set the toggle switch to "on"
+            }
+
+            // Handle theme change
+            toggleSwitch.addEventListener('change', () => {
+                // Toggle dark mode class
+                document.body.classList.toggle('dark-mode');
+                
+                // Save the new theme preference in local storage
+                const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
+            });
+        });
+    </script>
+</body>
+</html>

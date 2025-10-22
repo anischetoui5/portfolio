@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cv Anis</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+
+    <div id="particles-js"></div> <!-- Particles.js container -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(".option").click(function() {
+            $(".option").removeClass("active");
+            $(this).addClass("active");
+
+            // Toggle the visibility of the particles background
+            if ($(this).hasClass('active')) {
+                $("#particles-js").fadeOut();  // Hide particles.js on option click
+            } else {
+                $("#particles-js").fadeIn();  // Show particles.js if needed
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 15
+                },
+                size: {
+                    value: 3
+                },
+                move: {
+                    speed: 1,
+                    direction: "top",
+                    outMode: "out"
+                }
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    }
+                }
+            }
+        });
+    </script>
+
+
+    <nav>
+    <ul>
+      <li><a href="index.html" class="menu__link">About Me</a></li>
+      <li><a href="Home.html" class="menu__link">Experiences</a></li>
+      <li><a href="project.html" class="menu__link">Project</a></li>
+      <li><a href="contact.html" class="menu__link">Contact</a></li>  
+    </ul>
+  </nav>
+  <script type="text/javascript">
+    // Detect scroll event and modify styles
+window.addEventListener('scroll', function () {
+  const links = document.querySelectorAll('.menu__link');
+  const nav = document.querySelector('nav');
+
+  // Check if user has scrolled down by a certain amount (e.g., 50px)
+  if (window.scrollY > 50) {
+    links.forEach(link => {
+      link.classList.add('scrolled'); // Add the transparent background
+    });
+    nav.classList.add('scrolled'); // Optional: Add transparent background to nav
+  } else {
+    links.forEach(link => {
+      link.classList.remove('scrolled'); // Remove the transparent background
+    });
+    nav.classList.remove('scrolled'); // Optional: Remove transparent background from nav
+  }
+});
+
+  </script>
+
+  <p class="name"> I'm Anis. </p>
+
+  <div class="Me">
+    
+    <img src="540da865-bd7b-45e2-aee4-d92d3fb9dfc8.jpg" class="imgg">
+
+    <p class="jm">
+      <span style="font-size: 30px;"> I’m a web developer and video/image editor, </span> <br>
+      <span style="font-size: 30px;"> working on personal projects to build </span> <br>
+      <span style="font-size: 30px;"> a professional portfolio </span> <br> <br>
+    </p>
+
+  </div>
+
+    <div class="wahda">
+      
+      <p> 
+         I’ve been developing my skills for over 5 years <br>
+         working on various projects for clubs and university students<br>
+         These experiences allowed me to create practical and impactful solutions that I’m proud of<br> 
+         Currently, I’m expanding my expertise by learning how to code web games, <br>
+         combining my passion for development with interactive and engaging user experiences 
+      </p>
+
+    </div>
+
+    <p class="name1">
+
+      If you're working on an exciting web or app project or <br> 
+      even starting one from scratch—and need teammates,<br>
+      I’d love to join your team, provided I resonate with your project's idea.<br>
+      Feel free to reach out if you're interested in collaborating!
+
+    </p>
+
+
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+<script>
+    const toggleSwitch = document.querySelector('.switch input');
+
+    function loadParticles(theme) {
+        const particleColor = theme === 'dark' ? '#ffffff' : '#000000'; // Light particles for dark mode, dark for light mode
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 15,
+                },
+                color: {
+                    value: particleColor,
+                },
+                size: {
+                    value: 2,
+                },
+                move: {
+                    speed: 1,
+                    direction: "top",
+                    outMode: "out",
+                },
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse",
+                    },
+                },
+            },
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleSwitch.checked = true;
+        }
+        loadParticles(savedTheme);
+    });
+
+    // Handle theme change
+    toggleSwitch.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+        const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+
+        // Reload particles for the new theme
+        loadParticles(theme);
+    });
+</script>
+
+
+
+</body>
+</html>
+
