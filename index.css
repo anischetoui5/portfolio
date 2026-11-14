@@ -452,6 +452,20 @@ p { margin: 0; }
   font-weight: 500;
 }
 
+/* ---------- Project cards ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 400px) { .project-grid { grid-template-columns: 1fr; } }
+.project { display: grid; gap: 18px; }
+.project-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.project h3 { font-size: 1.5rem; }
+.project-desc { color: var(--muted); }
+.project-links { display: flex; flex-wrap: wrap; gap: 10px; }
+
 /* ---------- Education ---------- */
 .timeline { display: grid; gap: 16px; }
 .timeline-item { display: grid; grid-template-columns: 96px 1fr; gap: 20px; }
