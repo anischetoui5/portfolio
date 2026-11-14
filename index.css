@@ -557,3 +557,5 @@ p { margin: 0; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+.contact-email { font-size: 1.1rem; margin: -12px 0 24px; }
