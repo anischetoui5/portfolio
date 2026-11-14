@@ -1,183 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cv Anis</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anis — Web Developer & Editor</title>
+  <script>
+    (function () {
+      var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-    <div id="particles-js"></div> <!-- Particles.js container -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="brand">Anis<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">About</a></li>
+        <li><a href="Home.html">Experiences</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </header>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-        $(".option").click(function() {
-            $(".option").removeClass("active");
-            $(this).addClass("active");
+  <main class="container">
 
-            // Toggle the visibility of the particles background
-            if ($(this).hasClass('active')) {
-                $("#particles-js").fadeOut();  // Hide particles.js on option click
-            } else {
-                $("#particles-js").fadeIn();  // Show particles.js if needed
-            }
-        });
-    </script>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Full-stack developer · Video &amp; image editor</span>
+        <h1>Hi, I'm <span>Anis.</span></h1>
+        <p class="lede">I build full-stack web apps with React, Angular, Node.js and Laravel, and I edit photos and videos too.</p>
+        <div class="hero-actions">
+          <a href="project.html" class="btn btn-primary">See my work</a>
+          <a href="contact.html" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="540da865-bd7b-45e2-aee4-d92d3fb9dfc8.jpg" alt="Portrait of Anis">
+      </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 15
-                },
-                size: {
-                    value: 3
-                },
-                move: {
-                    speed: 1,
-                    direction: "top",
-                    outMode: "out"
-                }
-            },
-            interactivity: {
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
-                    }
-                }
-            }
-        });
-    </script>
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">About me</span>
+        <h2>A bit about what I do</h2>
+      </div>
+      <div class="about-grid">
+        <div class="card">
+          <div class="stat">5+</div>
+          <h3>Years of practice</h3>
+          <p>I've been developing my skills for over 5 years, building practical solutions for clubs and university students.</p>
+        </div>
+        <div class="card">
+          <div class="stat">BIS</div>
+          <h3>Bachelor's degree</h3>
+          <p>Business Information Systems at ESPRIT School of Business, capped by <a href="project.html" class="link">EASYfact</a>, an AI-powered SaaS for invoices and expenses.</p>
+        </div>
+        <div class="card">
+          <div class="stat">Next</div>
+          <h3>Web games</h3>
+          <p>I'm currently learning to code web games, combining development with interactive, engaging experiences.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="cta">
+        <div>
+          <h2>Let's build something together</h2>
+          <p>Working on an exciting web or app project, or starting one from scratch, and need a teammate? If your idea resonates with me, I'd love to join.</p>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Reach out</a>
+      </div>
+    </section>
 
-    <nav>
-    <ul>
-      <li><a href="index.html" class="menu__link">About Me</a></li>
-      <li><a href="Home.html" class="menu__link">Experiences</a></li>
-      <li><a href="project.html" class="menu__link">Project</a></li>
-      <li><a href="contact.html" class="menu__link">Contact</a></li>  
-    </ul>
-  </nav>
-  <script type="text/javascript">
-    // Detect scroll event and modify styles
-window.addEventListener('scroll', function () {
-  const links = document.querySelectorAll('.menu__link');
-  const nav = document.querySelector('nav');
+  </main>
 
-  // Check if user has scrolled down by a certain amount (e.g., 50px)
-  if (window.scrollY > 50) {
-    links.forEach(link => {
-      link.classList.add('scrolled'); // Add the transparent background
-    });
-    nav.classList.add('scrolled'); // Optional: Add transparent background to nav
-  } else {
-    links.forEach(link => {
-      link.classList.remove('scrolled'); // Remove the transparent background
-    });
-    nav.classList.remove('scrolled'); // Optional: Remove transparent background from nav
-  }
-});
-
-  </script>
-
-  <p class="name"> I'm Anis. </p>
-
-  <div class="Me">
-    
-    <img src="540da865-bd7b-45e2-aee4-d92d3fb9dfc8.jpg" class="imgg">
-
-    <p class="jm">
-      <span style="font-size: 30px;"> I’m a web developer and video/image editor, </span> <br>
-      <span style="font-size: 30px;"> working on personal projects to build </span> <br>
-      <span style="font-size: 30px;"> a professional portfolio </span> <br> <br>
-    </p>
-
-  </div>
-
-    <div class="wahda">
-      
-      <p> 
-         I’ve been developing my skills for over 5 years <br>
-         working on various projects for clubs and university students<br>
-         These experiences allowed me to create practical and impactful solutions that I’m proud of<br> 
-         Currently, I’m expanding my expertise by learning how to code web games, <br>
-         combining my passion for development with interactive and engaging user experiences 
-      </p>
-
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Anis</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/chetouianisg/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
+        <a href="https://mail.google.com/mail/u/1/?pli=1#inbox" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+        <a href="https://fr.linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
     </div>
+  </footer>
 
-    <p class="name1">
-
-      If you're working on an exciting web or app project or <br> 
-      even starting one from scratch—and need teammates,<br>
-      I’d love to join your team, provided I resonate with your project's idea.<br>
-      Feel free to reach out if you're interested in collaborating!
-
-    </p>
-
-
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider"></span>
-    </label>
-<script>
-    const toggleSwitch = document.querySelector('.switch input');
-
-    function loadParticles(theme) {
-        const particleColor = theme === 'dark' ? '#ffffff' : '#000000'; // Light particles for dark mode, dark for light mode
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 15,
-                },
-                color: {
-                    value: particleColor,
-                },
-                size: {
-                    value: 2,
-                },
-                move: {
-                    speed: 1,
-                    direction: "top",
-                    outMode: "out",
-                },
-            },
-            interactivity: {
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse",
-                    },
-                },
-            },
-        });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            toggleSwitch.checked = true;
-        }
-        loadParticles(savedTheme);
-    });
-
-    // Handle theme change
-    toggleSwitch.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode');
-        const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
-
-        // Reload particles for the new theme
-        loadParticles(theme);
-    });
-</script>
-
-
-
+  <script src="main.js"></script>
 </body>
 </html>
-
